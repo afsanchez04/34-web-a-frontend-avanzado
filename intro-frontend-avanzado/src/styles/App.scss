@@ -1,0 +1,70 @@
+@import 'variables';
+@import 'mixins';
+
+
+body{
+    background-color: $dark;
+    color: $secondary-color;
+}
+//Anidamiento
+.container{
+    @include responsive ('tablet'){
+        width: 80%;
+    }
+    @include responsive ('mobile'){
+        width: 100%;
+    }
+    background-color: $primary-color;
+    padding: 10px;
+    div{
+        background-color: sandybrown;
+        padding: 10px;
+        @include redondear (10px);
+        h1{
+            color: #3b3b3b;
+        }
+        p{
+            font-size: 1.3rem;
+        }
+    }
+}
+
+
+//Operaciones 
+$altura: 16px;
+
+.btn{
+    background-color: rgb(243, 217, 183);
+    padding: 8px 20px;
+    border: none;
+    font-size: $altura * 2.2;
+    @include redondear (40px)
+}
+
+//Herencia
+
+%btn{
+    @include redondear (6px);
+    padding: 5px 30px;
+    border: none;
+    box-shadow: 3px 3px 3px #232323;
+}
+
+.btn-sumar{
+    @extend %btn;
+    background-color: green;
+    color: $secondary-color;
+}
+.btn-restar{
+    @extend %btn;
+    background-color: tomato;
+    color: $secondary-color;
+}
+.btn-resetear{
+    @extend %btn;
+    background-color: grey;
+    color: $secondary-color;
+}
+
+
+

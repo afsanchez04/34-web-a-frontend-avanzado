@@ -1,0 +1,21 @@
+//Mixin: recibe un parámetro, reutiliza un bloque de código con parámetros distintos.
+
+@mixin redondear ($radio){
+    border-radius: $radio;
+}
+
+//Mixin que permite aplicar estilos responsive según el tamaño de la pantalla
+
+@mixin responsive ($device){
+    @if $device == 'mobile'{
+        @media (max-width: 600px){
+            @content;
+        }
+    }
+    @else if $device == 'tablet'{
+        @media(max-width: 768px){
+            @content;
+        }
+    }
+
+}
