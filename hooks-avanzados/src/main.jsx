@@ -1,10 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { AplicacionPrincipal } from './AplicacionPrincipal'
-
+import { ListaUsuarios } from './components/ListaUsuarios'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AplicacionPrincipal/>
+    <ListaUsuarios />
   </StrictMode>,
 )

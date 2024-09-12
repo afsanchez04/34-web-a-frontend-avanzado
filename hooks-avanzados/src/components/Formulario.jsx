@@ -1,23 +1,8 @@
-import { useState } from "react"
-
+import { useFormulario } from "../hooks/useFormulario"
 
 export const Formulario = () => {
 
-    const [texto, setTexto] = useState('')
-    const [password, setPassword] = useState('')
-    const [logged, setLogged] = useState(false)
-
-    const handleUser = ({ target }) => {
-        setTexto(target.value)
-    }
-    const handlePassword = ({ target }) => {
-        setPassword(target.value)
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setLogged(true)
-    }
+    const {texto,password,logged,handleUser,handlePassword,handleSubmit} = useFormulario()
 
     return (
         <div>
