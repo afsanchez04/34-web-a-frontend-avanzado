@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useFormulario } from "./components/useFormulario"
 
 export const App = () => {
 
@@ -9,16 +9,7 @@ export const App = () => {
     colores: ''
   }
 
-  const [formState, setFormState] = useState(initialForm)
-
-  const handleInputChange = ({target}) => {
-    const {name, value} = target
-    setFormState( {
-      ...formState,
-      [name]: value
-    } )
-
-  }
+  const {formState, handleInputChange} = useFormulario(initialForm)
 
   const handleSubmit = (event) => {
     event.preventDefault()
