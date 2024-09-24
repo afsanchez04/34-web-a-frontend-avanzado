@@ -1,8 +1,7 @@
-import { EnhancedDataDisplay } from "./components/DataDisplay"
-
+import { DataDisplay } from "./components/DataDisplay"
 
 export const App = () => {
   return (
-    <EnhancedDataDisplay />
+    <DataDisplay />
   )
 }
