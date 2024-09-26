@@ -1,8 +1,10 @@
+import { useContext } from "react"
+import { ThemeContext } from "../context/ThemeContext"
 
 
+export const HeaderContext = ({ textos, handleLanguage, auth, handleAuth }) => {
 
-
-export const Header = ({ theme, handleTheme, textos, handleLanguage, auth, handleAuth}) => {
+    const {theme, handleTheme} = useContext(ThemeContext)
 
     return (
         <header className={`card-header ${theme}`}>

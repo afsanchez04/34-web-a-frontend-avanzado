@@ -2,9 +2,13 @@ import { useState } from "react"
 import { Footer } from "./Footer"
 import { Header } from "./Header"
 import { Main } from "./Main"
+import { ThemeProvider } from "../context/ThemeContext"
+import { HeaderContext } from "./HeaderContext"
+import { MainContext } from "./MainContext"
+import { FooterContext } from "./FooterContext"
 
 
-const initialTheme = 'light'
+
 const initialLanguage = 'es'
 const initialAuth = null
 
@@ -35,16 +39,13 @@ const tranlations = {
     }
 }
 
-export const HomePage = () => {
+export const HomePageContext = () => {
 
-    const [theme, setTheme] = useState(initialTheme)
+
     const [language, setLanguage] = useState(initialLanguage)
     const [textos, setTextos] = useState(tranlations[language])
     const [auth, setAuth] = useState(initialAuth)
 
-    const handleTheme = (e) => {
-        setTheme(e.target.value)
-    }
 
     const handleLanguage = (e) => {
         setLanguage(e.target.value)
@@ -52,9 +53,9 @@ export const HomePage = () => {
     }
 
     const handleAuth = () => {
-        if(auth){
+        if (auth) {
             setAuth(null)
-        }else{
+        } else {
             setAuth(true)
         }
     }
@@ -62,23 +63,25 @@ export const HomePage = () => {
     return (
         <>
             <div className="card text-center">
-                <Header
-                    theme={theme}
-                    handleTheme={handleTheme}
-                    textos={textos}
-                    handleLanguage={handleLanguage}
-                    auth={auth}
-                    handleAuth={handleAuth}
-                />
-                <Main
-                    theme={theme}
-                    textos={textos}
-                    auth={auth}
-                />
-                <Footer
-                    theme={theme}
-                    textos={textos}
-                />
+                <ThemeProvider>
+                    <HeaderContext
+                        //theme={theme}
+                        //handleTheme={handleTheme}
+                        textos={textos}
+                        handleLanguage={handleLanguage}
+                        auth={auth}
+                        handleAuth={handleAuth}
+                    />
+                    <MainContext
+                        //theme={theme}
+                        textos={textos}
+                        auth={auth}
+                    />
+                    <FooterContext
+                        //theme={theme}
+                        textos={textos}
+                    />
+                </ThemeProvider>
             </div>
 
         </>

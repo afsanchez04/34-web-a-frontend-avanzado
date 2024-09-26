@@ -1,9 +1,9 @@
 
 
-export const Footer = ({theme}) => {
+export const Footer = ({theme, textos}) => {
     return (
         <footer className={`card-footer ${theme}`}>
-            <h4>Pie de página</h4>
+            <h4>{textos.footerTitle}</h4>
         </footer>
     )
 }
