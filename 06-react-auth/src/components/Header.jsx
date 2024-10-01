@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 
 export const Header = () => {
+
+    const { isAuth, logout } = useAuthContext()
+
     return (
         <nav className="navbar navbar-expand-sm bg-body-tertiary">
             <div className="container-fluid">
@@ -17,18 +21,33 @@ export const Header = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/dashboard">Dashboard</NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/secret">Secret</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">Login</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/signup">Signup</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/">Logout</NavLink>
-                        </li> 
+                        {
+                            isAuth
+                                ? (
+                                    <>
+
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/secret">Secret</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink onClick={logout} className="nav-link" to="/">Logout</NavLink>
+                                        </li>
+                                    </>
+                                )
+                                : (
+                                    <>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/login">Login</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/signup">Signup</NavLink>
+                                        </li>
+                                    </>
+                                )
+                        }
+
+
+
                     </ul>
                 </div>
             </div>

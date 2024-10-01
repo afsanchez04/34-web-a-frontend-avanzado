@@ -23,7 +23,7 @@ export const AuthProvider = ({children}) => {
     useEffect( () => {
         const token = localStorage.getItem('token')
         if(token){
-            const payload = jwtDecode(jwtToken)
+            const payload = jwtDecode(token)
             setIsAuth(true)
             setUserPayload(payload)
         }
