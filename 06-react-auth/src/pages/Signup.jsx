@@ -3,12 +3,15 @@ import { useForm } from "react-hook-form"
 import logo from "../assets/react.svg"
 import { registerUserService } from "../services/userServices"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 export const Signup = () => {
 
   const navigate = useNavigate()
 
   const { register, handleSubmit, formState: { errors } } = useForm()
+
+  const [emailError, setEmailError] = useState(null)
 
   const onSubmit = async (data) => {
     try {
@@ -18,7 +21,8 @@ export const Signup = () => {
         navigate("/login")
       }
     } catch (error) {
-      console.error("Error al registrar el usuario", error.message) 
+      console.error("Error al registrar el usuario", error.response.data.message) 
+      setEmailError(error.response.data.message)
     }
   }
 
@@ -70,7 +74,7 @@ export const Signup = () => {
       />
       { errors.password && <small className="text-danger">This field is required</small> }
       <button className="btn btn-primary" type="submit">Signup</button>
-
+      { emailError && <p className="text-danger">Este correo ya está registrado 💀</p> }
     </form>
   )
 }
