@@ -1,0 +1,12 @@
+{
+    "presets": [
+        "@babel/preset-env",
+        [
+            "@babel/preset-react",
+            {
+                "runtime": "automatic" //Para que babel pueda compilar JSX sin que se tenga que importar react en cada archivo
+            }
+        ]
+        
+    ]
+}
