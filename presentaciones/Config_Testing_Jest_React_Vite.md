@@ -9,7 +9,7 @@ npm i jest -D
 ### 2. Añadir script en `package.json`
 
 ```json
-//package.json
+
 {
   "name": "react-jest",
   "private": true,
@@ -22,7 +22,6 @@ npm i jest -D
     "preview": "vite preview",
     "test": "jest"  // <-----------------------🟢
   },
-  //...Resto de las configuraciones
 ```
 
 ### 3. Instalar @testing-library/jest-dom en dev dependencies
@@ -65,7 +64,7 @@ npm i -D @babel/preset-env @babel/preset-react
 📁 root / 📄 babel.config.json
 
 ```jsx
-//babel.config.json
+
 {
     "presets": [
         "@babel/preset-env",
@@ -85,7 +84,6 @@ npm i -D @babel/preset-env @babel/preset-react
 📁 src / 📁 test / 📄 fileMock.js 
 
 ```jsx
-//fileMock.js
 
 export default {
     __esModule: true,
@@ -117,17 +115,15 @@ npm i -D identity-obj-proxy
 Dentro importar solo @testing-library/jest-dom
 
 ```jsx
-//setupTests.js
 
 import '@testing-library/jest-dom'
 ```
 
 - Inicializa configuraciones globales para el entorno de pruebas, en este caso, añadiendo los matchers (funciones de Jest) de `@testing-library/jest-dom`. Al importarlo en **`setupTests.js`**, estos matchers personalizados quedan disponibles **globalmente** en todas las pruebas, sin necesidad de importarlos manualmente en cada archivo de prueba individual.
 
-### 11. Ir a 📄 jest.config.json y añadir vinculación con setupTests y testEnvironment
+### 11. Ir a 📁 root / 📄 jest.config.json y añadir vinculación con setupTests y testEnvironment
 
 ```jsx
-// jest.config.json
 
 {
     "setupFilesAfterEnv": [
@@ -158,7 +154,7 @@ import '@testing-library/jest-dom'
 # 👨🏻‍💻 Ejemplo de prueba test a componente App.jsx
 
 ```jsx
-//App.test.js
+//src/App.test.js
 
 import App from "./App";
 import { render, screen } from "@testing-library/react";
